@@ -6,7 +6,7 @@
     <title>Invitación Interactiva XV Años</title>
     <style>
       body {
-        font-family: italic;;
+        font-family: italic;
         background-color: #b2f0e4; /* Verde agua */
         display: flex;
         justify-content: center;
@@ -21,7 +21,6 @@
         width: 100%;
         max-width: 800px;
         height: 600px;
-        /* Ajustar la altura en pantallas pequeñas */
         max-height: 90vh;
       }
 
@@ -55,12 +54,14 @@
         border-radius: 10px;
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
       }
 
       .page-1 {
         background-image: url("xv.png");
-        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center;
         transform: rotateY(0deg);
       }
 
@@ -68,7 +69,6 @@
         background-image: url("fondov.jpg");
         background-size: cover;
         background-position: center;
-        background-color: rgba(255, 255, 255, 0.9);
         transform: rotateY(120deg);
         position: absolute;
         top: 0;
@@ -76,17 +76,25 @@
 
       .page-3 {
         background-image: url("fondo3.png");
-        background-size: 100% auto;
+        background-size: cover; /* Asegura que la imagen cubra todo el fondo */
         background-position: center;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-repeat: no-repeat; /* Evita la repetición de la imagen */
         transform: rotateY(240deg);
         position: absolute;
         top: 0;
+        width: 100%;
+        height: 100%;
       }
 
       .card-face.page-3 p {
-        margin-top: -130px;
-        text-align: right;
+        margin-top: -30px;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #333;
+        background-color: rgba(255, 255, 255, 0.7); /* Fondo claro para mayor legibilidad */
+        padding: 10px;
+        border-radius: 8px;
+        max-width: 90%;
       }
 
       h1 {
@@ -97,7 +105,7 @@
       }
 
       p {
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: #333;
         margin-bottom: 20px;
         text-align: center;
@@ -127,8 +135,7 @@
 
       .confirm-button {
         background-color: #27ae60;
-        margin-left: 380px;
-        margin-right: -100;
+        margin-top: 20px;
       }
 
       .confirm-button:hover {
@@ -144,6 +151,7 @@
 
         .card-face {
           padding: 10px;
+          background-size: cover; /* Ajustar las imágenes sin deformar */
         }
 
         h1 {
@@ -163,7 +171,20 @@
           font-size: 1rem;
         }
 
-       
+        .page-3 {
+          width: 100%; /* Ajuste automático para pantallas más pequeñas */
+          height: auto;
+          background-size: cover; /* Evitar la deformación de la imagen */
+        }
+
+        .card-face.page-3 p {
+          font-size: 1rem;
+        }
+
+        .confirm-button {
+          width: 100%;
+          padding: 12px;
+        }
       }
 
       /* Media queries para pantallas medianas (tablets) */
@@ -193,6 +214,12 @@
           padding: 12px 20px;
           font-size: 1.1rem;
         }
+
+        .page-3 {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
       }
     </style>
   </head>
@@ -218,10 +245,10 @@
 
         <!-- Página 3: Detalles del evento -->
         <div class="card-face page-3">
-          <p style="font-size: 1.5rem;">
-            El evento se realizará el día 12 de octubre del corriente&nbsp; 
-            <br> año en el polideportivo de la municipalidad 
-            <br>de Pirapó a partir de las 20:00 hs. 
+          <p>
+            El evento se realizará el día 12 de octubre del corriente año en el
+            polideportivo de la municipalidad de Pirapó a partir de las 20:00
+            hs.
           </p>
           <button class="confirm-button" onclick="confirmarAsistencia()">
             Confirmar Asistencia
