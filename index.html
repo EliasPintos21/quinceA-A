@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitación Interactiva XV Años</title>
+    <style>
+      body {
+        font-family: italic;;
+        background-color: #b2f0e4; /* Verde agua */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card-container {
+        perspective: 1000px;
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        height: 600px;
+        /* Ajustar la altura en pantallas pequeñas */
+        max-height: 90vh;
+      }
+
+      .card {
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+        transition: transform 1s ease;
+        position: relative;
+      }
+
+      .card.open-page-1 {
+        transform: rotateY(-120deg);
+      }
+
+      .card.open-page-2 {
+        transform: rotateY(-240deg);
+      }
+
+      .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .page-1 {
+        background-image: url("xv.png");
+        background-size: 100% 100%;
+        transform: rotateY(0deg);
+      }
+
+      .page-2 {
+        background-image: url("fondov.jpg");
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: rotateY(120deg);
+        position: absolute;
+        top: 0;
+      }
+
+      .page-3 {
+        background-image: url("fondodefinit.png");
+        background-size: 100% auto;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: rotateY(240deg);
+        position: absolute;
+        top: 0;
+      }
+
+      .card-face.page-3 p {
+        margin-top: -130px;
+        text-align: right;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #e74c3c;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      p {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .quote {
+        font-style: oblique;
+        color: #555;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      .confirm-button {
+        background-color: #27ae60;
+        margin-left: 380px;
+        margin-right: -100;
+      }
+
+      .confirm-button:hover {
+        background-color: #229954;
+      }
+
+      /* Media queries para pantallas pequeñas (móviles) */
+      @media (max-width: 600px) {
+        .card-container {
+          max-width: 100%;
+          height: auto;
+        }
+
+        .card-face {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .quote {
+          font-size: 1rem;
+        }
+
+        button {
+          padding: 10px 15px;
+          font-size: 1rem;
+        }
+
+       
+      }
+
+      /* Media queries para pantallas medianas (tablets) */
+      @media (max-width: 1024px) {
+        .card-container {
+          max-width: 90%;
+          height: 500px;
+        }
+
+        .card-face {
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+        }
+
+        .quote {
+          font-size: 1.2rem;
+        }
+
+        button {
+          padding: 12px 20px;
+          font-size: 1.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <div class="card" id="card">
+        <!-- Página 1: Tapa con imagen de fondo -->
+        <div class="card-face page-1">
+          <h1>TE INVITO A MIS XV</h1>
+          <button id="openCardBtn">Abrir tarjeta</button>
+        </div>
+        <!-- Página 2: Frase -->
+        <div class="card-face page-2">
+          <p class="quote">
+            Mis quince años representan una oportunidad para agradecer por el
+            pasado, disfrutar del presente y soñar con el futuro...<br /><br />Hay
+            momentos inolvidables en nuestra vida, que quedan en nuestra mente y
+            corazón por siempre, este es uno de ellos y quiero que tú seas
+            parte. <br />Te invito a mis quince primaveras.
+          </p>
+          <button id="nextPageBtn">Siguiente</button>
+        </div>
+
+        <!-- Página 3: Detalles del evento -->
+        <div class="card-face page-3">
+          <p style="font-size: 1.5rem;">
+            El evento se realizará el día 12 de octubre del corriente&nbsp; 
+            <br> año en el polideportivo de la municipalidad 
+            <br>de Pirapó a partir de las 20:00 hs. 
+          </p>
+          <button class="confirm-button" onclick="confirmarAsistencia()">
+            Confirmar Asistencia
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const card = document.getElementById("card");
+      const openCardBtn = document.getElementById("openCardBtn");
+      const nextPageBtn = document.getElementById("nextPageBtn");
+
+      // Función para abrir la primera página
+      openCardBtn.addEventListener("click", () => {
+        card.classList.add("open-page-1");
+      });
+
+      // Función para pasar a la segunda página
+      nextPageBtn.addEventListener("click", () => {
+        card.classList.add("open-page-2");
+      });
+
+      function confirmarAsistencia() {
+        alert("¡Gracias por confirmar tu asistencia!");
+      }
+    </script>
+  </body>
+</html>

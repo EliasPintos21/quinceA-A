@@ -1,0 +1,83 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1000px;
+  }
+  
+  .card {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+  }
+  
+  .front, .back, .details {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .front {
+    transform: translateZ(1px);
+  }
+  
+  .back {
+    transform: rotateY(180deg) translateZ(1px);
+  }
+  
+  .details {
+    transform: rotateY(-180deg) translateZ(1px);
+  }
+  
+  .show-front .front {
+    transform: none;
+  }
+  
+  .show-back .back {
+    transform: rotateY(0deg) translateZ(1px);
+  }
+  
+  .show-details .details {
+    transform: none;
+  }
+  
+  .image-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .image-container img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
