@@ -13,6 +13,7 @@
         align-items: center;
         height: 100vh;
         margin: 0;
+        overflow-x: hidden; /* Evita el desbordamiento horizontal */
       }
 
       .card-container {
@@ -22,6 +23,9 @@
         max-width: 800px;
         height: 600px;
         max-height: 90vh;
+        margin: 0 auto; /* Centro automático */
+        box-sizing: border-box;
+        padding: 10px; /* Para dar algo de espacio en móviles */
       }
 
       .card {
@@ -31,6 +35,8 @@
         transform: rotateY(0deg);
         transition: transform 1s ease;
         position: relative;
+        box-sizing: border-box;
+        
       }
 
       .card.open-page-1 {
@@ -56,6 +62,8 @@
         background-position: center;
         background-repeat: no-repeat;
         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box; /* Asegura que el padding no altere el tamaño */
+        
       }
 
       .page-1 {
@@ -75,7 +83,7 @@
       }
 
       .page-3 {
-        background-image: url("fondo3.png");
+        background-image: url("pag3.png");
         background-size: cover; /* Asegura que la imagen cubra todo el fondo */
         background-position: center;
         background-repeat: no-repeat; /* Evita la repetición de la imagen */
@@ -87,11 +95,16 @@
       }
 
       .card-face.page-3 p {
-        margin-top: -30px;
-        text-align: center;
+        margin-top: -100px;
+        text-align: justify;
         font-size: 1.2rem;
         color: #333;
-        background-color: rgba(255, 255, 255, 0.7); /* Fondo claro para mayor legibilidad */
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0
+        ); /* Fondo claro para mayor legibilidad */
         padding: 10px;
         border-radius: 8px;
         max-width: 90%;
@@ -135,7 +148,12 @@
 
       .confirm-button {
         background-color: #27ae60;
-        margin-top: 20px;
+        position: absolute; /* Posición absoluta para moverlo dentro del contenedor */
+        bottom: 20px; /* Espacio desde la parte inferior */
+        right: 20px; /* Espacio desde la parte derecha */
+        padding: 8px 12px; /* Tamaño del botón reducido */
+        font-size: 0.9rem; /* Tamaño de texto más pequeño */
+        border-radius: 8px;
       }
 
       .confirm-button:hover {
@@ -145,8 +163,9 @@
       /* Media queries para pantallas pequeñas (móviles) */
       @media (max-width: 600px) {
         .card-container {
-          max-width: 100%;
-          height: auto;
+          max-width: 100%; /* Asegura que no se desborde en móviles */
+          padding: 10px; /* Agrega un pequeño padding en los bordes */
+          margin: 0 auto; /* Centro automático para dispositivos pequeños */
         }
 
         .card-face {
@@ -182,8 +201,10 @@
         }
 
         .confirm-button {
-          width: 100%;
-          padding: 12px;
+          bottom: 10px; /* Reduce el espacio en móviles */
+          right: 10px;
+          padding: 6px 10px; /* Botón aún más pequeño en móviles */
+          font-size: 0.8rem; /* Tamaño de texto más pequeño en móviles */
         }
       }
 
@@ -228,7 +249,11 @@
       <div class="card" id="card">
         <!-- Página 1: Tapa con imagen de fondo -->
         <div class="card-face page-1">
-          <h1>TE INVITO A MIS XV</h1>
+          <h1>XV 
+            <br>Angel 
+            <br>& 
+            <br>Angela
+          </h1>
           <button id="openCardBtn">Abrir tarjeta</button>
         </div>
         <!-- Página 2: Frase -->
